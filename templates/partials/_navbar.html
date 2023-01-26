@@ -17,7 +17,7 @@
                 <li {% if '/' == request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3"
                     {% endif %}>
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
-                </li> -->
+                </li> 
                 <li {% if 'about' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3"
                     {% endif %}>
                     <a class="nav-link" href="{% url 'about' %}">About</a>
@@ -26,10 +26,10 @@
                     {% endif %}>
                     <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
                 </li>
-                <!-- <li {% if 'register' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3"
+                <li {% if 'addproperty' in request.path %} class="nav-item active mr-3" {% else %} class="nav-item mr-3"
                     {% endif %}>
-                    <a class="nav-link" href="{% url 'register' %}">Post Property For Free</a>
-                </li> -->
+                    <a class="nav-link" href="{% url 'addproperty' %}">Advertise Your Property for Free</a>
+                </li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

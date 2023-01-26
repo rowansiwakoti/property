@@ -9,62 +9,108 @@
         <div class="home-search p-5">
             <div class="overlay p-5">
                 <h1 class="display-4 mb-4">
-                    Property Searching Just Got So Easy
+                    <!-- Property Searching Just Got So Easy -->
+                    Real Estate Redefined: Discover Your Next Property Adventure with us
                 </h1>
-                <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores
+                <!-- <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Recusandae quas, asperiores
                     eveniet vel nostrum magnam
-                    voluptatum tempore! Consectetur, id commodi!</p>
+                    voluptatum tempore! Consectetur, id commodi!</p> -->
                 <div class="search">
                     <!-- Replace the URL in the form action -->
                     <form action="{% url 'search' %}">
                         <!-- Form Row 1 -->
                         <div class="form-row">
+                            
                             <div class="col-md-4 mb-3">
-                                <label class="sr-only">Keywords</label>
+                                <!-- commenting as we should have select option filter -->
+                                <!-- <label class="sr-only">City</label>
+                                <input type="text" name="city" class="form-control" placeholder="City"> -->
+
+                                <select class="form-control" placeholder="Purpose">
+                                    <option value="1">Purpose</option>
+                                    <option value="2">Buy</option>
+                                    <option value="3">Sell</option>
+                                    <option value="4">Rent</option>
+                                  </select>
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+
+                                <!-- commenting as we should have select option filter -->
+                                <!-- <label class="sr-only">Keywords</label>
                                 <input type="text" name="keywords" class="form-control"
-                                    placeholder="Keyword (Pool, Garage, etc)">
+                                    placeholder="Keyword (Pool, Garage, etc)"> -->
+
+                                    <select class="form-control" placeholder="select property type">
+                                        <option value="1">Property Type</option>
+                                        <option value="2">Apartments</option>
+                                        <option value="3">Penthouses</option>
+                                        <option value="4">Houses</option>
+                                        <option value="5">Villas</option>
+                                        <option value="6">Residential Plots</option>
+                                      </select>
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <label class="sr-only">City</label>
-                                <input type="text" name="city" class="form-control" placeholder="City">
-                            </div>
 
-                            <div class="col-md-4 mb-3">
-                                <label class="sr-only">State</label>
-                                <select name="state" class="form-control">
-                                    <option selected="true" disabled="disabled">State (All)</option>
-                                    <!-- Loop through the state choices -->
-                                    {% for key,value in state_choices.items %}
 
-                                    <option value="{{ key }}">{{ value }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        </div>
-                        <!-- Form Row 2 -->
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
                                 <label class="sr-only">Bedrooms</label>
                                 <select name="bedrooms" class="form-control">
-                                    <option selected="true" disabled="disabled">Bedrooms (All)</option>
+                                    <option selected="true" disabled="disabled">Bedrooms</option>
                                     {% for key,value in bedroom_choices.items %}
 
                                     <option value="{{ key }}">{{ value }}</option>
                                     {% endfor %}
                                 </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <select name="price" class="form-control" id="type">
-                                    <option selected="true" disabled="disabled">Max Price (Any)</option>
-                                    {% for key,value in price_choices.items %}
 
-                                    <option value="{{ key }}">{{ value }}</option>
-                                    {% endfor %}
-                                </select>
+                                <!-- commenting as we dont need states filter -->
+                                <!-- <label class="sr-only">State</label>
+                                <select name="state" class="form-control">
+                                    <option selected="true" disabled="disabled">State (All)</option> -->
+                                    <!-- Loop through the state choices -->
+                                    <!-- {% for key,value in state_choices.items %} -->
+
+                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
+                                    <!-- {% endfor %} -->
+                                <!-- </select> -->
                             </div>
                         </div>
-                        <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                        <!-- Form Row 2 -->
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3 form-outline">
+
+                                <!-- commenting this cus we dont need it -->
+                                <!-- <label class="sr-only">Bedrooms</label>
+                                <select name="bedrooms" class="form-control">
+                                    <option selected="true" disabled="disabled">Bedrooms (All)</option> -->
+                                    <!-- {% for key,value in bedroom_choices.items %} -->
+
+                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
+                                    <!-- {% endfor %} -->
+                                <!-- </select> -->
+
+                                <!-- <select name="price" class="form-control" id="type">
+                                    <option selected="true" disabled="disabled">Min Price (Rs.)</option> -->
+                                    <!-- {% for key,value in price_choices.items %} -->
+
+                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
+                                    <!-- {% endfor %} -->
+                                <!-- </select> -->
+
+                                <input type="number" class="form-control" placeholder="Min Price (Rs.)"/>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <!-- <select name="price" class="form-control" id="type">
+                                    <option selected="true" disabled="disabled">Max Price (Rs.)</option> -->
+                                    <!-- {% for key,value in price_choices.items %} -->
+
+                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
+                                    <!-- {% endfor %}
+                                </select> -->
+                                <input type="number" class="form-control" placeholder="Max Price (Rs.)"/>
+                            </div>
+                        </div>
+                        <button class="btn btn-secondary btn-block mt-4" type="submit">Search Property</button>
                     </form>
                 </div>
             </div>
@@ -83,7 +129,7 @@
             {% for listing in listings %}
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
-                    <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+                    <!-- <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                     <div class="card-img-overlay">
                         <h2>
                             <span class="badge badge-secondary text-white">Rs.{{ listing.price | intcomma }}</span>
@@ -119,9 +165,56 @@
                         </div>
                         <hr>
                         <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                    </div> -->
+
+
+
+
+
+
+
+
+
+                <div class="property-card">
+                    <div class="box">
+                      <div class="top">
+                        <img src="{{ listing.photo_main.url }}" alt="" />
+                        <span
+                          ><i class="fas fa-heart"></i><i class="fas fa-exchange-alt"></i
+                        ></span>
+                      </div>
+                      <div class="bottom">
+                        <h3 class="text-truncate">Home In Merrick Way sdfdf df df df df dfdfdfdf dfd f df dfdfdfdf</h3>
+                        <p class="text-truncate">
+                          Enchanting three bedrooms, three bath home with spacious one
+                          bedroom, one bathasdasdasdasdassdfsdfsdfsdfsdfd...
+                        </p>
+                        <div class="advants">
+                          <div>
+                            <span>Bedrooms</span>
+                            <div><i class="fas fa-th-large"></i><span>3</span></div>
+                          </div>
+                          <div>
+                            <span>Bathrooms</span>
+                            <div><i class="fas fa-shower"></i><span>3</span></div>
+                          </div>
+                          <div>
+                            <span>Area</span>
+                            <div>
+                              <i class="fas fa-vector-square"></i
+                              ><span>4300<span>Sq Ft</span></span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="price">
+                          <span>For Sale</span>
+                          <span>$540,000</span>
+                        </div>
+                      </div>
                     </div>
-                </div>
+                  </div>
             </div>
+        </div>
 
             {% endfor %}
 
@@ -136,6 +229,45 @@
 
 
         </div>
+         <!-- testing -->
+        <!-- <div class="property-card">
+            <div class="box">
+              <div class="top">
+                <img src="https://cdn.pixabay.com/photo/2014/07/10/17/18/large-home-389271__340.jpg" alt="" />
+                <span
+                  ><i class="fas fa-heart"></i><i class="fas fa-exchange-alt"></i
+                ></span>
+              </div>
+              <div class="bottom">
+                <h3>Home In Merrick Way</h3>
+                <p>
+                  Enchanting three bedrooms, three bath home with spacious one
+                  bedroom, one bath...
+                </p>
+                <div class="advants">
+                  <div>
+                    <span>Bedrooms</span>
+                    <div><i class="fas fa-th-large"></i><span>3</span></div>
+                  </div>
+                  <div>
+                    <span>Bathrooms</span>
+                    <div><i class="fas fa-shower"></i><span>3</span></div>
+                  </div>
+                  <div>
+                    <span>Area</span>
+                    <div>
+                      <i class="fas fa-vector-square"></i
+                      ><span>4300<span>Sq Ft</span></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="price">
+                  <span>For Sale</span>
+                  <span>$540,000</span>
+                </div>
+              </div>
+            </div>
+          </div> -->
     </div>
 </section>
 
@@ -146,25 +278,30 @@
                 <i class="fas fa-comment fa-4x mr-4"></i>
                 <hr>
                 <h3>Consulting Services</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <p class="text-justify">
+                    We are proud to offer comprehensive consulting services for property buyers, sellers, and renters.
+                    We begin by conducting a thorough assessment of your situation, taking into account your budget, location preferences, and specific requirements. 
+                    Based on this assessment, we provide expert advice and recommendations on the best properties available on the market. 
+                </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-home fa-4x mr-4"></i>
                 <hr>
-                <h3>Propery Management</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <h3>Property Management</h3>
+                <p class="text-justify">
+                    We offer a comprehensive property management service for our customers looking to sell, buy or rent their properties, including apartments, houses, penthouses, residential plots and villas.
+                    Our goal is to make the process of managing your properties as easy and stress-free as possible. Contact us today to learn more about how we can help you manage your properties.
+                </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-suitcase fa-4x mr-4"></i>
                 <hr>
-                <h3>Renting & Selling</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <h3>Renting, Selling & Buying</h3>
+                <p class="text-justify">
+                    We are here to assist you with all your property needs, whether you are looking to buy, sell or rent a property. 
+                    We will guide you through the process of buying, selling or renting a property, providing you with all the necessary information and support to make an informed decision. 
+                    Contact us to learn more about how we can help you with buying, selling or renting properties.
+                </p>
             </div>
         </div>
     </div>

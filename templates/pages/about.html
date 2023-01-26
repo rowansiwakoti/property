@@ -10,7 +10,7 @@
         <div class="row text-center">
             <div class="col-md-12">
                 <h1 class="display-4">About JH Real Estate</h1>
-                <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
+                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias officiis et vitae quibusdam. Accusamus nulla at quibusdam illum id, provident autem qui dicta cupiditate nam ea eaque nostrum sequi nesciunt iste maxime tenetur iure voluptatem a consequatur mollitia modi! Alias, earum at totam aliquid fuga cupiditate laudantium similique optio consequuntur ad modi vel corporis facilis ratione mollitia vitae hic cum excepturi. Sint, perspiciatis molestiae? Voluptas porro unde ut vero molestias, fugit quia aperiam modi nesciunt doloribus eius illum, ad possimus nemo quae soluta facilis minus quasi dolore, aspernatur cumque. Hic aut reprehenderit unde consequatur, sequi sit laborum temporibus veniam voluptatibus, voluptate nobis nemo quasi? Culpa consectetur nulla temporibus commodi reprehenderit atque non distinctio excepturi corrupti mollitia. Sapiente sequi quibusdam ipsam possimus tenetur quidem ad, cum asperiores amet distinctio ipsa repellat repudiandae alias fugiat magnam illum impedit dicta minima sed vero ab expedita. Deleniti dicta voluptatem non, aspernatur corrupti exercitationem eum officia aliquam vitae a eligendi repellat, quibusdam accusantium veritatis natus, eius culpa cupiditate aliquid placeat? Ea nesciunt quas vitae atque eaque, quidem, dignissimos debitis dolorum in nisi quaerat non dicta? Incidunt, fugiat, nisi doloremque unde sapiente officiis perferendis assumenda eius consequuntur, temporibus deserunt! Optio, aspernatur officia! Nulla minus hic dolor?</p>
             </div>
         </div>
     </div>
@@ -38,11 +38,9 @@
                 <h2>We Search For The Perfect Home</h2>
                 <p class="lead">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt, pariatur!</p>
                 <img src="{% static 'img/about.jpg' %}" alt="">
-                <p class="mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis esse officia
-                    repudiandae ad saepe ex, amet
-                    neque quod accusamus rem quia magnam magni dolorum facilis ullam minima perferendis? Exercitationem
-                    at quaerat
-                    commodi id libero eveniet harum perferendis laborum molestias quia.</p>
+                <p class="mt-4">
+                    I am Shekhar Siwakoti, a dedicated and experienced real estate agent with over 12 years of experience in the industry. Throughout my career, I have worked with a wide range of clients to help them buy, sell, and rent properties of all types, from apartments and villas to penthouses, residential plots, and houses. I am well-versed in the local real estate market, and my knowledge and expertise allows me to provide my clients with the best possible advice and guidance. I am dedicated to helping my clients find their dream homes, whether it's their first home, a rental property, or an investment. My attention to detail and thorough understanding of the market enable me to identify the best deals and the most suitable properties to match my clients' needs. I pride myself on providing excellent customer service and ensuring a stress-free and enjoyable experience for all of my clients. I am committed to building long-lasting relationships with my clients and am always available to provide expert advice and assistance. If you are looking to buy, sell or rent a property, I am here to help you every step of the way.
+                </p>
             </div>
             {% if mvpRealtors %}
                 {% for realtor in mvpRealtors %}
@@ -65,7 +63,16 @@
 <!-- Work -->
 <section id="work" class="bg-dark text-white text-center">
     <h2 class="display-4">We Work For You</h2>
-    <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem velit aperiam, unde aliquid at similique!</h4>
+    <p class="mt-4 text-justify mr-5 ml-5">
+        Our website is your ultimate destination for all property-related needs. 
+        We specialize in buying, selling and renting of properties of different types including apartments, villas, penthouses, residential plots, and houses. 
+        Our website has been designed to make your property search an easy and efficient process. 
+        Our listings are regularly updated to ensure that you have access to the most recent and relevant information.
+        Our advanced search options and user-friendly interface make it easy to navigate and filter through properties based on your specific needs and preferences. 
+        We understand that buying, selling or renting a property can be a daunting task and that is why we are always available to assist you.
+        We are experts in the local market and have in-depth knowledge of the property market. They will provide you with accurate and up-to-date information and guide you through every step of the buying, selling, and renting process. From paperwork, negotiations, to closing, our agents are there to assist you every step of the way.
+        Our website is a one-stop-shop for all your property-related needs. We are committed to providing our clients with the best possible service and strive to make the buying, selling and renting process as simple and seamless as possible. If you're looking for a new home, an investment property, or a rental, our website is the perfect place to start your search.
+    </p>
     <hr>
     <a href="{% url 'listings' %}" class="btn btn-secondary text-white btn-lg">View Our Featured Listings</a>
 </section>
