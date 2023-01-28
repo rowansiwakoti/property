@@ -5,16 +5,11 @@ id: INT
 realtor: INT (FOREIGN KEY [realtor])
 title: STR
 address: STR
-city: STR
-state: STR
-zipcose: STR
 description: TEXT
 price: INT
 bedrooms: INT
 bathrooms: INT
-garage: INT [default: 0]
 sqft: INT
-lot_size: FLOAT
 is_published: BOOL [default: true]
 list_date: list_date
 photo_main: STR

@@ -1,5 +1,5 @@
 """
-WSGI config for jhre project.
+WSGI config for ktmapartments project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -13,6 +13,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jhre.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ktmapartments.settings')
 
 application = get_wsgi_application()

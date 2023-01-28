@@ -12,7 +12,7 @@ db.sqlite3
 venv
 /static
 .vscode
-/jhre_theme
+/ktmapartments_theme
 /logo
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
