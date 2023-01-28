@@ -151,8 +151,8 @@ MESSAGE_TAGS = {
 # Email Configuration
 # EMAIL_HOST = 'smtp.gmail.com'
 # EMAIL_PORT = 587
-# EMAIL_HOST_USER = 'jhrealestate295@gmail.com'
-# EMAIL_HOST_PASSWORD = 'jhrealestate1234'
+# EMAIL_HOST_USER = 'rowansiwakoti@gmail.com'
+# EMAIL_HOST_PASSWORD = 'sadfasdfasdf'
 # EMAIL_USE_TLS = True
 
 try:

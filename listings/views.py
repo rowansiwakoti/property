@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Listing
-from .choices import price_choices,bedroom_choices,state_choices
+from .choices import BEDROOMS, PROPERTY_TYPES, PURPOSES
 
 
 # Create your views here.
@@ -9,7 +9,7 @@ def index(request):
 
     listingsAll = Listing.objects.order_by('-list_date').filter(is_published=True) #Most recent listings should be first and only those published will be shown
 
-    paginator = Paginator(listingsAll, 3)
+    paginator = Paginator(listingsAll, 50)
 
     page = request.GET.get('page') #'page' is the URL parameter that we are looking for
     paged_listingsAll = paginator.get_page(page)
@@ -26,46 +26,47 @@ def listing(request, listing_id):
     context = {
         'listing': listing
     }
-    return render(request, 'listings/listing.html',context)
+    return render(request, 'listings/listing.html', context)
 
 def search(request):
 
     queryset_list = Listing.objects.order_by('-list_date')
 
-    # Keywords in the search form
-    if 'keywords' in request.GET:
-        keywords = request.GET['keywords'] #'keywords' is the form field
-        if keywords:
-            queryset_list = queryset_list.filter(description__icontains=keywords)
+    # purpose in the search form
+    if 'purpose' in request.GET:
+        purpose = request.GET['purpose'] #'purpose' is the form field
+        if purpose:
+            queryset_list = queryset_list.filter(purpose__iexact=purpose)
 
-    # City
-    if 'city' in request.GET:
-        city = request.GET['city']
-        if city:
-            queryset_list = queryset_list.filter(city__iexact=city)
-
-    # State
-    if 'state' in request.GET:
-        state = request.GET['state']
-        if state:
-            queryset_list = queryset_list.filter(state__iexact=state)
+    # Property Types
+    if 'property_type' in request.GET:
+        property_type = request.GET['property_type']
+        if property_type:
+            queryset_list = queryset_list.filter(property_type__iexact=property_type)
 
     # Bedrooms
     if 'bedrooms' in request.GET:
         bedrooms = request.GET['bedrooms']
         if bedrooms:
-            queryset_list = queryset_list.filter(bedrooms__iexact=bedrooms) # 'lte' can be used for "less than and equal to"
+            queryset_list = queryset_list.filter(bedrooms__iexact=bedrooms)
 
-    # Price
-    if 'price' in request.GET:
-        price = request.GET['price']
-        if price:
-            queryset_list = queryset_list.filter(price__lte=price) # 'lte' can be used for "less than and equal to"
+    # Min Price
+    if 'min_price' in request.GET:
+        min_price = request.GET['min_price']
+        if min_price:
+            queryset_list = queryset_list.filter(price__gte=min_price) # 'gte' can be used for "greater than or equal to"
+
+    # Max Price
+    if 'max_price' in request.GET:
+        max_price = request.GET['max_price']
+        if max_price:
+            queryset_list = queryset_list.filter(price__lte=max_price) # 'lte' can be used for "less than or equal to"
+
 
     context = {
-        'state_choices': state_choices,
-        'bedroom_choices': bedroom_choices,
-        'price_choices':price_choices,
+        'bedrooms': BEDROOMS,
+        'purposes': PURPOSES,
+        'property_types': PROPERTY_TYPES,
         'listings': queryset_list,
         'values': request.GET
     }

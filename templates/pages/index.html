@@ -22,92 +22,42 @@
                         <div class="form-row">
                             
                             <div class="col-md-4 mb-3">
-                                <!-- commenting as we should have select option filter -->
-                                <!-- <label class="sr-only">City</label>
-                                <input type="text" name="city" class="form-control" placeholder="City"> -->
-
-                                <select class="form-control" placeholder="Purpose">
-                                    <option value="1">Purpose</option>
-                                    <option value="2">Buy</option>
-                                    <option value="3">Sell</option>
-                                    <option value="4">Rent</option>
+                                <select class="form-control" placeholder="Purpose" name="purpose">
+                                    <option selected="true" disabled="disabled">Purpose</option>
+                                    <option value="buy">Buy</option>
+                                    <option value="sell">Sell</option>
+                                    <option value="rent">Rent</option>
                                   </select>
                             </div>
 
                             <div class="col-md-4 mb-3">
-
-                                <!-- commenting as we should have select option filter -->
-                                <!-- <label class="sr-only">Keywords</label>
-                                <input type="text" name="keywords" class="form-control"
-                                    placeholder="Keyword (Pool, Garage, etc)"> -->
-
-                                    <select class="form-control" placeholder="select property type">
-                                        <option value="1">Property Type</option>
-                                        <option value="2">Apartments</option>
-                                        <option value="3">Penthouses</option>
-                                        <option value="4">Houses</option>
-                                        <option value="5">Villas</option>
-                                        <option value="6">Residential Plots</option>
-                                      </select>
+                                    <select class="form-control" placeholder="select property type" name="property_type">
+                                        <option selected="true" disabled="disabled">Property Type</option>
+                                        <option value="apartments">Apartments</option>
+                                        <option value="penthouses">Penthouses</option>
+                                        <option value="houses">Houses</option>
+                                        <option value="villas">Villas</option>
+                                        <option value="residential_plots">Residential Plots</option>
+                                    </select>
                             </div>
 
                             <div class="col-md-4 mb-3">
-
-
-                                <label class="sr-only">Bedrooms</label>
                                 <select name="bedrooms" class="form-control">
                                     <option selected="true" disabled="disabled">Bedrooms</option>
-                                    {% for key,value in bedroom_choices.items %}
+                                    {% for key,value in bedroom_choices %}
 
                                     <option value="{{ key }}">{{ value }}</option>
                                     {% endfor %}
                                 </select>
-
-                                <!-- commenting as we dont need states filter -->
-                                <!-- <label class="sr-only">State</label>
-                                <select name="state" class="form-control">
-                                    <option selected="true" disabled="disabled">State (All)</option> -->
-                                    <!-- Loop through the state choices -->
-                                    <!-- {% for key,value in state_choices.items %} -->
-
-                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
-                                    <!-- {% endfor %} -->
-                                <!-- </select> -->
                             </div>
                         </div>
                         <!-- Form Row 2 -->
                         <div class="form-row">
                             <div class="col-md-6 mb-3 form-outline">
-
-                                <!-- commenting this cus we dont need it -->
-                                <!-- <label class="sr-only">Bedrooms</label>
-                                <select name="bedrooms" class="form-control">
-                                    <option selected="true" disabled="disabled">Bedrooms (All)</option> -->
-                                    <!-- {% for key,value in bedroom_choices.items %} -->
-
-                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
-                                    <!-- {% endfor %} -->
-                                <!-- </select> -->
-
-                                <!-- <select name="price" class="form-control" id="type">
-                                    <option selected="true" disabled="disabled">Min Price (Rs.)</option> -->
-                                    <!-- {% for key,value in price_choices.items %} -->
-
-                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
-                                    <!-- {% endfor %} -->
-                                <!-- </select> -->
-
-                                <input type="number" class="form-control" placeholder="Min Price (Rs.)"/>
+                                <input type="number" name="min_price" class="form-control" placeholder="Min Price (Rs.)"/>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <!-- <select name="price" class="form-control" id="type">
-                                    <option selected="true" disabled="disabled">Max Price (Rs.)</option> -->
-                                    <!-- {% for key,value in price_choices.items %} -->
-
-                                    <!-- <option value="{{ key }}">{{ value }}</option> -->
-                                    <!-- {% endfor %}
-                                </select> -->
-                                <input type="number" class="form-control" placeholder="Max Price (Rs.)"/>
+                                <input type="number" name="max_price" class="form-control" placeholder="Max Price (Rs.)"/>
                             </div>
                         </div>
                         <button class="btn btn-secondary btn-block mt-4" type="submit">Search Property</button>
