@@ -10,6 +10,7 @@ class Listing(models.Model):
   title = models.CharField(max_length=200)
   purpose = models.CharField(max_length=4, choices=PURPOSES, default='sell')
   property_type = models.CharField(max_length=17, choices=PROPERTY_TYPES, default='apartments')
+  city = models.CharField(max_length=100, null=True)
   address = models.CharField(max_length=200)
   description = models.TextField(blank=True)
   price = models.IntegerField()
@@ -22,7 +23,6 @@ class Listing(models.Model):
   photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
   photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
   photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-  photo_6 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
   is_published = models.BooleanField(default=True)
   list_date = models.DateTimeField(default=datetime.now, blank=True)
   def __str__(self): #In the Django Admin, there will be a table that displays each listing and we need to pick the main field

@@ -27,6 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# Prevents browsers from accessing the data in HTTP. It is typically set to 1 year i.e 31536000 seconds. But under testing conditions you might prefer using a lower value like 60 sec or 3600 sec.
+# SECURE_HSTS_SECONDS = 60
+
+# Prevents sniffing attacks
+# SECURE_CONTENT_TYPE_NOSNIFF = True
+
 # Application definition
 
 INSTALLED_APPS = [
