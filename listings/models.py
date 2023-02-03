@@ -1,21 +1,20 @@
 from django.db import models
 from datetime import datetime
 from realtors.models import Realtor
-from .choices import PURPOSES, PROPERTY_TYPES
-
+from .choices import PURPOSES, PROPERTY_TYPES, BEDROOMS
 
 # Create your models here.
 class Listing(models.Model):
   realtor = models.ForeignKey(Realtor, on_delete=models.DO_NOTHING) #Realtor is another model
-  title = models.CharField(max_length=200)
-  purpose = models.CharField(max_length=4, choices=PURPOSES, default='sell')
-  property_type = models.CharField(max_length=17, choices=PROPERTY_TYPES, default='apartments')
-  city = models.CharField(max_length=100, null=True)
-  address = models.CharField(max_length=200)
-  description = models.TextField(blank=True)
+  title = models.CharField(max_length=100)
+  purpose = models.CharField(max_length=4, choices=PURPOSES)
+  property_type = models.CharField(max_length=17, choices=PROPERTY_TYPES)
+  city = models.CharField(max_length=100)
+  address = models.CharField(max_length=100)
+  description = models.TextField(max_length=500, blank=True)
   price = models.IntegerField()
-  bedrooms = models.IntegerField()
-  bathrooms = models.DecimalField(max_digits=2, decimal_places=1)
+  bedrooms = models.IntegerField(choices=BEDROOMS)
+  bathrooms = models.IntegerField(choices=BEDROOMS)
   sqft = models.IntegerField()
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
   photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -25,6 +24,8 @@ class Listing(models.Model):
   photo_5 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
   is_published = models.BooleanField(default=True)
   list_date = models.DateTimeField(default=datetime.now, blank=True)
+
+ 
   def __str__(self): #In the Django Admin, there will be a table that displays each listing and we need to pick the main field
                      #that needs to be display, so we choose 'title' 
     return self.title
