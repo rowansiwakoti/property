@@ -21,17 +21,17 @@
                             <!-- The method should be POST because the default is GET! -->
                             {% csrf_token %}
                             <!-- Prevent Cross Site Request Forgery -->
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" required>
                             </div>
 
-                            <div class="form-group">
+                            <div class="mb-3">
                                 <label for="password2">Password</label>
                                 <input type="password" name="password" class="form-control" required>
                             </div>
 
-                            <input type="submit" value="Login" class="btn btn-secondary btn-block">
+                            <input type="submit" value="Login" class="btn btn-secondary d-block w-100">
                         </form>
                     </div>
                 </div>

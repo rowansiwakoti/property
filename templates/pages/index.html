@@ -19,7 +19,7 @@
                     <!-- Replace the URL in the form action -->
                     <form action="{% url 'search' %}">
                         <!-- Form Row 1 -->
-                        <div class="form-row">
+                        <div class="row">
                             
                             <div class="col-md-4 mb-3">
                                 <select class="form-control" placeholder="Purpose" name="purpose">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                         <!-- Form Row 2 -->
-                        <div class="form-row">
+                        <div class="row">
                             <div class="col-md-6 mb-3 form-outline">
                                 <input type="number" name="min_price" class="form-control" placeholder="Min Price (Rs.)"/>
                             </div>
@@ -60,7 +60,7 @@
                                 <input type="number" name="max_price" class="form-control" placeholder="Max Price (Rs.)"/>
                             </div>
                         </div>
-                        <button class="btn btn-secondary btn-block mt-4" type="submit">Search Property</button>
+                        <button class="btn btn-secondary d-block w-100" type="submit">Search Property</button>
                     </form>
                 </div>
             </div>
@@ -82,11 +82,11 @@
                 <div class="property-card">
                     <div class="box">
                       <div class="top">
-                        <!-- <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">
+                        <!-- <a href="{% url 'listing' listing.id %}" class="btn btn-primary d-block w-100">
                         </a> -->
                           <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
                           <div class="card-img-overlay">
-                              <span class="badge badge-secondary text-white">Rs.{{ listing.price | intcomma }}</span>
+                              <span class="badge bg-secondary text-white">Rs.{{ listing.price | intcomma }}</span>
                           </div>
 
                       </div>
@@ -138,7 +138,7 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-4">
-                <i class="fas fa-comment fa-4x mr-4"></i>
+                <i class="fas fa-comment fa-4x me-4"></i>
                 <hr>
                 <h3>Consulting Services</h3>
                 <p class="text-justify">
@@ -148,7 +148,7 @@
                 </p>
             </div>
             <div class="col-md-4">
-                <i class="fas fa-home fa-4x mr-4"></i>
+                <i class="fas fa-home fa-4x me-4"></i>
                 <hr>
                 <h3>Property Management</h3>
                 <p class="text-justify">
@@ -157,7 +157,7 @@
                 </p>
             </div>
             <div class="col-md-4">
-                <i class="fas fa-suitcase fa-4x mr-4"></i>
+                <i class="fas fa-suitcase fa-4x me-4"></i>
                 <hr>
                 <h3>Renting, Selling & Buying</h3>
                 <p class="text-justify">

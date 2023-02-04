@@ -3,18 +3,23 @@
 {% block title %} | Register Account {% endblock %}
 
 {% block content %}
-<section id="register" class="bg-light py-5">
+<section id="register" class="bg-light pb-5 pt-4">
     <div class="container">
+      <div style="margin-bottom: 20px; background: #eee; padding: 10px; text-align: justify;">
+        Advertise your property on our website for maximum exposure and reach a large audience of potential renters and buyers. Simply fill out the form with your property details and post it to our platform.
+        Take the first step in renting or selling your property, and advertise with us today!
+      </div>
+      <div class="card" style="padding: 20px;">
       <form action="{% url 'addproperty' %}" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %}
         <!-- {{form}} -->
-        <div class="form-row">
-          <div class="form-group col-md-6">
+        <div class="row">
+          <div class="mb-3 col-md-6">
             <label for="id_title">Title</label>
             {{form.title}}
             <!-- <input type="text" id="input-title" class="form-control" name="title" placeholder="For eg: Well Furnished 3BHK apartment"> -->
           </div>
-          <div class="form-group col-md-4">
+          <div class="mb-3 col-md-4">
             <label for="id_property_type">Property Type</label>
             {{form.property_type}}
             <!-- <select id="input-property-types" class="form-control" name="property_type">
@@ -24,7 +29,7 @@
               <!-- {% endfor %} -->
             <!-- </select> -->
           </div>
-          <div class="form-group col-md-2">
+          <div class="mb-3 col-md-2">
             <label for="id_purpose">Purpose</label>
             {{form.purpose}}
 
@@ -36,14 +41,14 @@
             <!-- </select> -->
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-3">
+        <div class="row">
+          <div class="mb-3 col-md-3">
             <label for="id_price">Price</label>
             {{form.price}}
 
             <!-- <input type="number" class="form-control" id="input-price" name="price" placeholder="Enter price"> -->
           </div>
-          <div class="form-group col-md-3">
+          <div class="mb-3 col-md-3">
             <label for="id_bedrooms">Bedrooms</label>
             {{form.bedrooms}}
 
@@ -54,7 +59,7 @@
               <!-- {% endfor %} -->
             <!-- </select> -->
           </div>
-          <div class="form-group col-md-3">
+          <div class="mb-3 col-md-3">
 
             <label for="id_bathrooms">Bathrooms</label>
             {{form.bathrooms}}
@@ -66,74 +71,75 @@
               {% endfor %}
             </select> -->
           </div>
-          <div class="form-group col-md-3">
+          <div class="mb-3 col-md-3">
             <label for="id_sqft">Area (Sqft.)</label>
             <!-- <input type="number" class="form-control" id="input-area" name="sqft"> -->
             {{form.sqft}}
 
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
+        <div class="row">
+          <div class="mb-3 col-md-6">
             <label for="id_city">City</label>
             {{form.city}}
 
             <!-- <input type="text" class="form-control" id="input-city" name="city" placeholder="Enter city name"> -->
           </div>
-          <div class="form-group col-md-6">
+          <div class="mb-3 col-md-6">
             <label for="id_address">Address</label>
             {{form.address}}
             <!-- <input type="text" class="form-control" id="input-address" name="address" placeholder="Enter address"> -->
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-4">
+        <div class="row">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_main">Photo Main</label>
             {{form.photo_main}}
 
             <!-- <input type="file" class="form-control" id="input-photo-main" name="photo_main" placeholder="sdf"> -->
           </div>
-          <div class="form-group col-md-4">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_1">Photo 1</label>
             {{form.photo_1}}
 
             <!-- <input type="file" class="form-control" id="input-photo-1" name="photo_1" placeholder="sdf"> -->
           </div>
-          <div class="form-group col-md-4">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_2">Photo 2</label>
             {{form.photo_2}}
 
             <!-- <input type="file" class="form-control" id="input-photo-2" name="photo_2" placeholder="sdf"> -->
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-4">
+        <div class="row">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_3">Photo 3</label>
             {{form.photo_3}}
 
             <!-- <input type="file" class="form-control" id="input-photo-3" name="photo_3" placeholder="sdf"> -->
           </div>
-          <div class="form-group col-md-4">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_4">Photo 4</label>
             {{form.photo_4}}
 
             <!-- <input type="file" class="form-control" id="input-photo-4" name="photo_4" placeholder="sdf"> -->
           </div>
-          <div class="form-group col-md-4">
+          <div class="mb-3 col-md-4">
             <label class="form-label" for="id_photo_5">Photo 5</label>
             {{form.photo_5}}
 
             <!-- <input type="file" class="form-control" id="input-photo-5" name="photo_5" placeholder="sdf"> -->
           </div>
         </div>
-        <div class="form-group">
+        <div class="mb-3">
           <label for="id_description">Description</label>
           {{form.description}}
 
           <!-- <textarea class="form-control" id="input-description" name="description" rows="7" placeholder="Enter description and/or any other details about the property"></textarea> -->
         </div>
-        <button type="submit" class="btn btn-secondary btn-block">Post Property</button>
+        <button type="submit" class="btn btn-secondary d-block w-100">Post Property</button>
       </form>
+      </div>
       {% if form.error_message %}
       <div class="alert alert-danger" role="alert">
         {{form.error_message}}
