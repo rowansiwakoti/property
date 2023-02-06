@@ -10,33 +10,28 @@ def register(request):
         # Get form values
         first_name = request.POST['first_name']
         last_name = request.POST['last_name']
-        username = request.POST['username']
         email = request.POST['email']
+        phone = request.POST['phone']
         password = request.POST['password']
         password2 = request.POST['password2']
 
         # Check if passwords match
         if password == password2:
-            # Check is username being used
-            if User.objects.filter(username=username).exists(): #The username on the left of the equal sign is the field in DB
-                messages.error(request, 'This username already exists')
+            if User.objects.filter(email=email).exists(): #The username on the left of the equal sign is the field in DB
+                messages.error(request, 'This email already exists')
                 return redirect('register')
             else:
-                if User.objects.filter(email=email).exists(): #The username on the left of the equal sign is the field in DB
-                    messages.error(request, 'This email already exists')
-                    return redirect('register')
-                else:
-                    # Register successfully
-                    user= User.objects.create_user(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
+                # Register successfully
+                user= User.objects.create_user(username=email,password=password,email=email,phone=phone,first_name=first_name,last_name=last_name)
 
-                    # Login after registration
-                    # auth.login(request.user)
-                    # messages.success(request,'You are now logged in')
-                    # return redirect('index')
+                # Login after registration
+                # auth.login(request.user)
+                # messages.success(request,'You are now logged in')
+                # return redirect('index')
 
-                    user.save()
-                    messages.success(request,'You are now registered. Please log in.')
-                    return redirect('login')
+                user.save()
+                messages.success(request,'You are now registered. Please log in.')
+                return redirect('login')
 
 
         else:
@@ -48,10 +43,10 @@ def register(request):
 def login(request):
     if request.method == 'POST': # Form submission
         # Login user
-        username = request.POST['username']
+        email = request.POST['email']
         password = request.POST['password']
 
-        user = auth.authenticate(username=username, password=password)
+        user = auth.authenticate(username=email, password=password)
 
         if user is not None:
             auth.login(request, user)
