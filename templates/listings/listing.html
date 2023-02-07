@@ -93,7 +93,7 @@
                     <div class="col-md-6">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item text-secondary">
-                                <i class="fas fa-money-bill-alt"></i> Asking Price:
+                                <i class="fas fa-money-bill-alt"></i> Price:
                                 <span class="float-right">Rs.{{ listing.price | intcomma }}</span>
                             </li>
                             <li class="list-group-item text-secondary">
@@ -104,23 +104,13 @@
                                 <i class="fas fa-bath"></i> Bathrooms:
                                 <span class="float-right">{{ listing.bathrooms }}</span>
                             </li>
-                            <li class="list-group-item text-secondary">
-                                <i class="fas fa-car"></i> Garage:
-                                <span class="float-right">{{ listing.garage }}
-                                </span>
-                            </li>
                         </ul>
                     </div>
                     <div class="col-md-6">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item text-secondary">
-                                <i class="fas fa-th-large"></i> Square Feet:
+                                <i class="fas fa-th-large"></i> Area (Sqft):
                                 <span class="float-right">{{ listing.sqft }}</span>
-                            </li>
-                            <li class="list-group-item text-secondary">
-                                <i class="fas fa-square"></i> Lot Size:
-                                <span class="float-right">{{ listing.lot_size }}
-                                </span>
                             </li>
                             <li class="list-group-item text-secondary">
                                 <i class="fas fa-calendar"></i> Listing Date:

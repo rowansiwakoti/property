@@ -70,13 +70,20 @@
 
 <!-- Alerts -->
 {% include 'partials/_alerts.html' %}
-<!-- Listings -->
+
 <section id="listings" class="py-4">
     <div class="container">
-        <h3 class="text-center mb-3">Recently Added Properties</h3>
+        <div class="d-flex justify-content-between">
+                <div>
+                    <h4>Properties for Sale</h4>
+                </div>
+                <div>
+                    <a href="">View all</a>
+                </div>
+        </div>
         <div class="row">
-            {% if listings %}
-            {% for listing in listings %}
+            {% if sell_list %}
+            {% for listing in sell_list %}
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card listing-preview">
                 <div class="property-card">
@@ -88,6 +95,7 @@
                           <div class="card-img-overlay">
                               <span class="badge bg-secondary text-white">Rs.{{ listing.price | intcomma }}</span>
                           </div>
+                          <a class="view-property" href="{% url 'listing' listing.id %}">View Property</a>
 
                       </div>
                       <div class="bottom">
@@ -105,10 +113,77 @@
                             <div><i class="fas fa-bath"></i><span>{{ listing.bathrooms }}</span></div>
                           </div>
                           <div>
-                            <span>Area</span>
+                            <span>Area (Sqft)</span>
                             <div>
                               <i class="fas fa-vector-square"></i
-                              ><span>{{ listing.sqft }}<span>Sqft</span></span>
+                              ><span>{{ listing.sqft }}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="price">
+                          <span>For {{ listing.purpose }}</span>
+                          <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+
+            {% endfor %}
+
+            {% else %}
+            <div class="col-md-12">
+                <p>No Listings Available</p>
+            </div>
+
+            {% endif %}
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <div>
+                <h4>Properties for Rent</h4>
+            </div>
+            <div>
+                <a href="">View all</a>
+            </div>
+        </div>
+        <div class="row">
+            {% if rent_list %}
+            {% for listing in rent_list %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card listing-preview">
+                <div class="property-card">
+                    <div class="box">
+                      <div class="top">
+                        <!-- <a href="{% url 'listing' listing.id %}" class="btn btn-primary d-block w-100">
+                        </a> -->
+                          <img class="card-img-top" src="{{ listing.photo_main.url }}" alt="">
+                          <div class="card-img-overlay">
+                              <span class="badge bg-secondary text-white">Rs.{{ listing.price | intcomma }}</span>
+                          </div>
+                          <a class="view-property" href="{% url 'listing' listing.id %}">View Property</a>
+
+                      </div>
+                      <div class="bottom">
+                        <h3 class="text-truncate">{{ listing.title }}</h3>
+                        <p class="text-truncate">
+                          {{ listing.description }}
+                        </p>
+                        <div class="advants">
+                          <div>
+                            <span>Bedrooms</span>
+                            <div><i class="fas fa-bed"></i><span>{{ listing.bedrooms }}</span></div>
+                          </div>
+                          <div>
+                            <span>Bathrooms</span>
+                            <div><i class="fas fa-bath"></i><span>{{ listing.bathrooms }}</span></div>
+                          </div>
+                          <div>
+                            <span>Area (Sqft)</span>
+                            <div>
+                              <i class="fas fa-vector-square"></i
+                              ><span>{{ listing.sqft }}</span>
                             </div>
                           </div>
                         </div>

@@ -122,44 +122,8 @@ img {
 
 
 
-/* css codes for post property page */
-.gradient-custom {
-      background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-      }
-      
-      .card-custom {
-      border-bottom-left-radius: 10% 50%;
-      border-top-left-radius: 10% 50%;
-      background-color: #f8f9fa ;
-      }
-      
-      
-      .input-custom {
-      background-color: white ;
-      }
-      
-      .white-text {
-      color: hsl(52, 0%, 98%);
-      font-weight: 100 ;
-      font-size: 14px;
-      }
-      
-      .back-button {
-      background-color: hsl(52, 0%, 98%);
-      font-weight: 700;
-      color: black ;
-      margin-top: 50px ;
-}
 
-
-
-
-
-
-
-
-
-
+    
 
 .property-card .box .top {
   position: relative;
@@ -182,11 +146,11 @@ img {
   opacity: 1;
 }
 
-.property-card .box .top:after {
-  content: "View Property";
+.property-card .box .top a {
+  visibility: visible;
   color: white;
   font-size: 12px;
-  padding: 10px;
+  padding: 10px 30px;
   border: 1px solid white;
   position: absolute;
   top: 50%;
@@ -194,12 +158,9 @@ img {
   transform: translate(-50%, -50%);
   cursor: pointer;
   transition: 0.3s;
-  opacity: 0;
+  opacity: 3;
 }
 
-.property-card .box .top:hover:after {
-  opacity: 1;
-}
 
 .property-card .box .top img {
   width: 100%;
@@ -209,28 +170,12 @@ img {
 .property-card .box .top span {
   position: absolute;
   color: white;
-  font-size: 20px;
-}
-
-.property-card .box .top span i {
-  margin-left: 5px;
+  font-size: 18px;
 }
 
 .property-card .box .bottom {
   padding: 20px 15px;
   position: relative;
-}
-
-.property-card .box:not(:last-of-type) .bottom:before {
-  content: "Hot";
-  background-color: #ea723d;
-  color: white;
-  font-size: 11px;
-  padding: 4px 7px;
-  position: absolute;
-  left: 20px;
-  top: -40px;
-  z-index: 1;
 }
 
 .property-card .box .bottom h3 {

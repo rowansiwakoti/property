@@ -7,9 +7,11 @@ from listings.choices import BEDROOMS
 # Create your views here.
 
 def index(request):
-    listingsHome = Listing.objects.order_by('-list_date').filter(is_published=True)[:3] # [:3] means only showing 3 listings
+    sell_list = Listing.objects.order_by('-list_date').filter(is_published=True, purpose='sell')[:6] # [:6] means only showing 6 listings
+    rent_list = Listing.objects.order_by('-list_date').filter(is_published=True, purpose='rent')[:6]
     context = {
-        'listings': listingsHome,
+        'sell_list': sell_list,
+        'rent_list': rent_list,
         'bedroom_choices': BEDROOMS,
     }
     return render(request,'pages/index.html', context)
