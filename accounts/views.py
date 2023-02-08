@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
-from django.contrib.auth.models import User
 from contacts.models import Contact
+from .models import User
+# from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def register(request):
@@ -17,12 +18,12 @@ def register(request):
 
         # Check if passwords match
         if password == password2:
-            if User.objects.filter(email=email).exists(): #The username on the left of the equal sign is the field in DB
+            if User.objects.filter(email=email).exists(): #The email on the left of the equal sign is the field in DB
                 messages.error(request, 'This email already exists')
                 return redirect('register')
             else:
                 # Register successfully
-                user= User.objects.create_user(username=email,password=password,email=email,phone=phone,first_name=first_name,last_name=last_name)
+                user= User.objects.create_user(first_name=first_name, last_name=last_name, email=email, username=email, phone=phone, password=password)
 
                 # Login after registration
                 # auth.login(request.user)
@@ -46,14 +47,20 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
 
-        user = auth.authenticate(username=email, password=password)
+        try:
+            user = User.objects.get(email=email)
+        except:
+            messages.error(request, 'User does not exist')
+            return redirect('login')
+
+        user = auth.authenticate(request, email=email, password=password)
 
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
             return redirect('dashboard')
         else:
-            messages.error(request,'Invalid Credentials')
+            messages.error(request,'Email or password is invalid')
             return redirect('login')
     else:
         return render(request,'accounts/login.html')
@@ -64,6 +71,7 @@ def logout(request):
         messages.success(request,'You are now logged out')
         return redirect('index')
 
+# @login_required(login_url='login')
 def dashboard(request):
     user_contacts = Contact.objects.order_by('-contact_date').filter(user_id=request.user.id)
     context = {

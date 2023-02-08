@@ -39,7 +39,7 @@
                 {% if user.is_authenticated %}
                 <li {% if 'dashboard' in request.path %} class="nav-item active me-3" {% else %} class="nav-item me-3"
                     {% endif %}>
-                    <a class="nav-link" href="{% url 'dashboard' %}">Wecome {{user.username}} (Dashboard)</a>
+                    <a class="nav-link" href="{% url 'dashboard' %}">Wecome {{user.first_name}} (Dashboard)</a>
                 </li>
                 <li class="nav-item active me-3">
                     <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}"><i class="fas fa-sign-out-alt"></i>Logout</a>

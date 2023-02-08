@@ -1,11 +1,11 @@
 astroid==2.2.5
 colorama==0.4.1
-# Django==2.2.27
+# Django==2.2.27 installed
 isort==4.3.21
 lazy-object-proxy==1.4.2
 mccabe==0.6.1
-# Pillow==9.0.1
-# psycopg2-binary==2.9.5
+# Pillow==9.0.1 installed
+# psycopg2-binary==2.9.5 installed
 pylint==2.3.1
 pytz==2019.2
 six==1.12.0
@@ -13,8 +13,9 @@ sqlparse==0.3.0
 wrapt==1.11.2
 typed-ast
 # typed-ast==1.5.4 installed vakocha
-# ez-setup==0.9
-# setuptools==66.1.1
-# wheel==0.38.4
+# ez-setup==0.9 installed
+# setuptools==66.1.1 installed
+# wheel==0.38.4 installed
+#django-pwa-1.1.0 installed
 
 # apache2-utils apachebenchmark used for load test on http server...
