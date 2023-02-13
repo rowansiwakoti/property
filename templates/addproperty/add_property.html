@@ -3,143 +3,365 @@
 {% block title %} | Register Account {% endblock %}
 
 {% block content %}
+
+<!-- <div class="container"> -->
+ 
+<!-- </div> -->
+
+
 <section id="register" class="bg-light pb-5 pt-4">
     <div class="container">
-      <div style="margin-bottom: 20px; background: #eee; padding: 10px; text-align: justify;">
+      <div style="background: #eee; text-align: justify;" class="p-3 mb-4 card shadow-sm">
         Advertise your property on our website for maximum exposure and reach a large audience of potential renters and buyers. Simply fill out the form with your property details and post it to our platform.
         Take the first step in renting or selling your property, and advertise with us today!
       </div>
-      <div class="card" style="padding: 20px;">
+      <!-- <div class="card" style="padding: 20px;"> -->
       <form action="{% url 'addproperty' %}" method="POST" enctype="multipart/form-data"> 
         {% csrf_token %}
         <!-- {{form}} -->
-        <div class="row">
-          <div class="mb-3 col-md-6">
-            <label for="id_title">Title</label>
-            {{form.title}}
-            <!-- <input type="text" id="input-title" class="form-control" name="title" placeholder="For eg: Well Furnished 3BHK apartment"> -->
-          </div>
-          <div class="mb-3 col-md-4">
-            <label for="id_property_type">Property Type</label>
-            {{form.property_type}}
-            <!-- <select id="input-property-types" class="form-control" name="property_type">
-              <option selected="true" disabled="disabled">Choose..</option> -->
-              <!-- {% for key, value in property_types %} -->
-                <!-- <option value="{{ key }}">{{ value }}</option> -->
-              <!-- {% endfor %} -->
-            <!-- </select> -->
-          </div>
-          <div class="mb-3 col-md-2">
-            <label for="id_purpose">Purpose</label>
-            {{form.purpose}}
+        <div class="card shadow-sm px-4 py-4">
+        <div style="font-weight: bold;" class="mb-1">Property Title</div>
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="id_title">Title</label>
+              {{form.title}}
+              <!-- <input type="text" id="input-title" class="form-control" name="title" placeholder="For eg: Well Furnished 3BHK apartment"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_property_type">Property Type</label>
+              {{form.property_type}}
+              <!-- <select id="input-property-types" class="form-control" name="property_type">
+                <option selected="true" disabled="disabled">Choose..</option> -->
+                <!-- {% for key, value in property_types %} -->
+                  <!-- <option value="{{ key }}">{{ value }}</option> -->
+                <!-- {% endfor %} -->
+              <!-- </select> -->
+            </div>
+            <div class="mb-3 col-md-2">
+              <label for="id_purpose">Purpose</label>
+              {{form.purpose}}
 
-            <!-- <select class="form-control" id="input-purpose" name="purpose">
-              <option selected="true" disabled="disabled">Choose..</option> -->
-              <!-- {% for key, value in purposes %} -->
-                <!-- <option value="{{ key }}">{{ value }}</option> -->
-              <!-- {% endfor %} -->
-            <!-- </select> -->
+              <!-- <select class="form-control" id="input-purpose" name="purpose">
+                <option selected="true" disabled="disabled">Choose..</option> -->
+                <!-- {% for key, value in purposes %} -->
+                  <!-- <option value="{{ key }}">{{ value }}</option> -->
+                <!-- {% endfor %} -->
+              <!-- </select> -->
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="mb-3 col-md-3">
-            <label for="id_price">Price</label>
-            {{form.price}}
+        <div class="card shadow-sm mt-4 px-4 py-4">
+        <div style="font-weight: bold;" class="mb-1">Apartment Details</div>
 
-            <!-- <input type="number" class="form-control" id="input-price" name="price" placeholder="Enter price"> -->
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="id_price">Price</label>
+              {{form.price}}
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_city">Furnish Type</label>
+                <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in furnish_types %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <!-- <div class="mb-3 col-md-2">
+              <label for="id_sqft">Unit</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in unit %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+                </select>
+            </div> -->
+            <div class="mb-3 col-md-4">
+              <label for="id_sqft">Area</label>
+              {{form.area}}
+            </div>
           </div>
-          <div class="mb-3 col-md-3">
-            <label for="id_bedrooms">Bedrooms</label>
-            {{form.bedrooms}}
 
-            <!-- <select class="form-control" id="input-bedrooms" name="bedrooms">
-              <option selected="true" disabled="disabled">Choose..</option> -->
-              <!-- {% for key, value in bedrooms %} -->
-                <!-- <option value="{{ key }}">{{ value }}</option> -->
-              <!-- {% endfor %} -->
-            <!-- </select> -->
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="id_bedrooms">Bedrooms</label>
+              {{form.bedrooms}}
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_bathrooms">Bathrooms</label>
+              {{form.bathrooms}}
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Living</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in bedrooms %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
           </div>
-          <div class="mb-3 col-md-3">
-
-            <label for="id_bathrooms">Bathrooms</label>
-            {{form.bathrooms}}
-
-            <!-- <select class="form-control" id="input-bathrooms" name="bathrooms">
-              <option selected="true" disabled="disabled">Choose..</option>
-              {% for key, value in bedrooms %}
-                <option value="{{ key }}">{{ value }}</option>
-              {% endfor %}
-            </select> -->
+        
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Kitchen</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in bedrooms %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_city">Floor</label>
+              <!-- <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in floors %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select> -->
+              <input class="form-control" type="number" placeholder="For eg: 3.5"/>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Parking</label>
+              <!-- <select class="form-control" id="road_condition" name="road_condition" multiple>
+                {% for key, value in parking %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select> -->
+              <div class="select-btn">
+                <span class="btn-text">Choose..</span>
+                <span class="arrow-dwn">
+                    <i class="fa-solid fa-chevron-down"></i>
+                </span>
+            </div>
+          
+            <ul class="list-items">
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">Not Available</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">1 Bike</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">2 Bikes</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">2+ Bikes</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">1 Car</span>
+                </li>
+                <li class="item">
+                    <span class="checkbox">
+                        <i class="fa-solid fa-check check-icon"></i>
+                    </span>
+                    <span class="item-text">2 Cars</span>
+                </li>
+                <li class="item">
+                  <span class="checkbox">
+                      <i class="fa-solid fa-check check-icon"></i>
+                  </span>
+                  <span class="item-text">2+ Cars</span>
+              </li>
+            </ul>
+            </div>
           </div>
-          <div class="mb-3 col-md-3">
-            <label for="id_sqft">Area (Sqft.)</label>
-            <!-- <input type="number" class="form-control" id="input-area" name="sqft"> -->
-            {{form.sqft}}
 
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Road Size</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Enter road size">
+                <div class="input-group-prepend">
+                  <div class="input-group-text">Feet</div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Road Condition</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in road_condition %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Facing Direction</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in directions %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="id_city">Minimum Rental Duration</label>
+              <select class="form-control" id="input-purpose" name="furnish_type">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in min_rental_duration %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Available From</label>
+              <input type="date" class="form-control" />
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="id_address">Built Year</label>
+              <input type="date" class="form-control" />
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="mb-3 col-md-6">
-            <label for="id_city">City</label>
-            {{form.city}}
+        <!-- <div class="pt-5">Property Details</div>
+        <div class="card px-5 py-4">
+          <div class="row">
+            <div class="mb-3 col-md-3">
+              <label for="id_price">Price</label>
+              {{form.price}} -->
 
-            <!-- <input type="text" class="form-control" id="input-city" name="city" placeholder="Enter city name"> -->
+              <!-- <input type="number" class="form-control" id="input-price" name="price" placeholder="Enter price"> -->
+            <!-- </div>
+            <div class="mb-3 col-md-3">
+              <label for="id_bedrooms">Bedrooms</label>
+              {{form.bedrooms}} -->
+
+              <!-- <select class="form-control" id="input-bedrooms" name="bedrooms">
+                <option selected="true" disabled="disabled">Choose..</option> -->
+                <!-- {% for key, value in bedrooms %} -->
+                  <!-- <option value="{{ key }}">{{ value }}</option> -->
+                <!-- {% endfor %} -->
+              <!-- </select> -->
+            <!-- </div>
+            <div class="mb-3 col-md-3">
+
+              <label for="id_bathrooms">Bathrooms</label>
+              {{form.bathrooms}} -->
+
+              <!-- <select class="form-control" id="input-bathrooms" name="bathrooms">
+                <option selected="true" disabled="disabled">Choose..</option>
+                {% for key, value in bedrooms %}
+                  <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+              </select> -->
+            <!-- </div>
+            <div class="mb-3 col-md-3">
+              <label for="id_sqft">Area (Sqft.)</label> -->
+              <!-- <input type="number" class="form-control" id="input-area" name="sqft"> -->
+              <!-- {{form.sqft}}
+
+            </div>
           </div>
-          <div class="mb-3 col-md-6">
-            <label for="id_address">Address</label>
-            {{form.address}}
-            <!-- <input type="text" class="form-control" id="input-address" name="address" placeholder="Enter address"> -->
+        
+          <div class="row">
+            <div class="mb-3 col-md-6">
+              <label for="id_city">City</label>
+              {{form.city}} -->
+
+              <!-- <input type="text" class="form-control" id="input-city" name="city" placeholder="Enter city name"> -->
+            <!-- </div>
+            <div class="mb-3 col-md-6">
+              <label for="id_address">Address</label>
+              {{form.address}} -->
+              <!-- <input type="text" class="form-control" id="input-address" name="address" placeholder="Enter address"> -->
+            <!-- </div>
+          </div>
+        </div> -->
+        <div class="card shadow-sm mt-4 px-4 py-4">
+        <div style="font-weight: bold;" class="mb-1">Property Images</div>
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_main">Photo Main</label>
+              {{form.photo_main}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-main" name="photo_main" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_1">Photo 1</label>
+              {{form.photo_1}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-1" name="photo_1" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_2">Photo 2</label>
+              {{form.photo_2}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-2" name="photo_2" placeholder="sdf"> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_3">Photo 3</label>
+              {{form.photo_3}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-3" name="photo_3" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_4">Photo 4</label>
+              {{form.photo_4}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-4" name="photo_4" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_5">Photo 5</label>
+              {{form.photo_5}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-5" name="photo_5" placeholder="sdf"> -->
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_3">Photo 6</label>
+              {{form.photo_3}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-3" name="photo_3" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_4">Photo 7</label>
+              {{form.photo_4}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-4" name="photo_4" placeholder="sdf"> -->
+            </div>
+            <div class="mb-3 col-md-4">
+              <label class="form-label" for="id_photo_5">Photo 8</label>
+              {{form.photo_5}}
+
+              <!-- <input type="file" class="form-control" id="input-photo-5" name="photo_5" placeholder="sdf"> -->
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_main">Photo Main</label>
-            {{form.photo_main}}
+        <!-- <div for="id_description" class="pt-4">Property Description</div> -->
+        <!-- <div class="card p-3"> -->
+          <div class="card shadow-sm px-4 py-4 mb-4 mt-4">
+            <label for="id_description" style="font-weight: bold;" class="mb-1">Description</label>
+            {{form.description}}
 
-            <!-- <input type="file" class="form-control" id="input-photo-main" name="photo_main" placeholder="sdf"> -->
+            <!-- <textarea class="form-control" id="input-description" name="description" rows="7" placeholder="Enter description and/or any other details about the property"></textarea> -->
           </div>
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_1">Photo 1</label>
-            {{form.photo_1}}
-
-            <!-- <input type="file" class="form-control" id="input-photo-1" name="photo_1" placeholder="sdf"> -->
-          </div>
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_2">Photo 2</label>
-            {{form.photo_2}}
-
-            <!-- <input type="file" class="form-control" id="input-photo-2" name="photo_2" placeholder="sdf"> -->
-          </div>
-        </div>
-        <div class="row">
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_3">Photo 3</label>
-            {{form.photo_3}}
-
-            <!-- <input type="file" class="form-control" id="input-photo-3" name="photo_3" placeholder="sdf"> -->
-          </div>
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_4">Photo 4</label>
-            {{form.photo_4}}
-
-            <!-- <input type="file" class="form-control" id="input-photo-4" name="photo_4" placeholder="sdf"> -->
-          </div>
-          <div class="mb-3 col-md-4">
-            <label class="form-label" for="id_photo_5">Photo 5</label>
-            {{form.photo_5}}
-
-            <!-- <input type="file" class="form-control" id="input-photo-5" name="photo_5" placeholder="sdf"> -->
-          </div>
-        </div>
-        <div class="mb-3">
-          <label for="id_description">Description</label>
-          {{form.description}}
-
-          <!-- <textarea class="form-control" id="input-description" name="description" rows="7" placeholder="Enter description and/or any other details about the property"></textarea> -->
-        </div>
+        <!-- </div> -->
         <button type="submit" class="btn btn-secondary d-block w-100">Post Property</button>
       </form>
-      </div>
+      <!-- </div> -->
       {% if form.error_message %}
       <div class="alert alert-danger" role="alert">
         {{form.error_message}}

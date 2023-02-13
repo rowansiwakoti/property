@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="{% static 'css/all.css' %}">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/css/multi-select-tag.css">
     <!-- Custom -->
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
     <!-- Lightbox -->
     <link rel="stylesheet" href="{% static 'css/lightbox.min.css' %}">
 
+     <!-- Fontawesome CDN Link this is working -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <title>Real Estate {% block title %}{% endblock %}</title>
 </head>
 
@@ -34,8 +37,52 @@
 
     <script src="{% static 'js/jquery-3.3.1.min.js' %} "></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag/dist/js/multi-select-tag.js"></script>
     <script src="{% static 'js/lightbox.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        const selectBtn = document.querySelector(".select-btn"),
+        items = document.querySelectorAll(".item");
+
+        selectBtn.addEventListener("click", () => {
+            selectBtn.classList.toggle("open");
+        });
+
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                item.classList.toggle("checked");
+
+                let checked = document.querySelectorAll(".checked"),
+                    btnText = document.querySelector(".btn-text"), selectedItems = [];
+
+                        if (checked && checked.length) {
+                                checked.forEach((item) => selectedItems.push(item.innerText));
+                                btnText.innerText = selectedItems.join(', ');
+                        }
+
+                        if (item.innerText === 'Not Available') {
+                            items.forEach(liItem => {
+                                if (liItem.innerText !== 'Not Available') {
+                                    liItem.classList.remove('checked');
+                               }
+                               btnText.innerText = selectedItems.filter(sItem => sItem === 'Not Available');
+                            })
+                        }
+
+                        if (item.innerText !== 'Not Available') {
+                            items.forEach(liItem => {
+                                if (liItem.innerText === 'Not Available') {
+                                    liItem.classList.remove('checked');
+                                    btnText.innerText = selectedItems.filter(sItem => sItem !== 'Not Available');
+                                }
+                               btnText.innerText = selectedItems.filter(sItem => sItem !== 'Not Available').join(', ')
+                            })
+                        }
+
+                        if (!btnText.innerText) btnText.innerText = 'Choose..';
+            });
+        })
+    </script>
 </body>
 
 </html>

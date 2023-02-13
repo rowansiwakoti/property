@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.mail import send_mail
-from listings.choices import BEDROOMS, PROPERTY_TYPES, PURPOSES
+from listings.choices import BEDROOMS, PROPERTY_TYPES, PURPOSES, FURNISH_TYPE, FLOORS, DIRECTIONS, MIN_RENTAL_DURATION, ROAD_CONDITION, PARKING, UNIT_TYPES
 from listings.models import Listing
 from .forms import AddPropertyForm
 
@@ -11,7 +11,14 @@ def add_property(request):
     context = {
         'bedrooms': BEDROOMS,
         'property_types': PROPERTY_TYPES,
-        'purposes': PURPOSES
+        'purposes': PURPOSES,
+        'furnish_types': FURNISH_TYPE,
+        'floors': FLOORS,
+        'directions': DIRECTIONS,
+        'min_rental_duration': MIN_RENTAL_DURATION,
+        'road_condition': ROAD_CONDITION,
+        'parking': PARKING,
+        'unit': UNIT_TYPES
     }
     if request.method =='POST':
         form = AddPropertyForm(request.POST, request.FILES)
@@ -24,7 +31,7 @@ def add_property(request):
              price = form.cleaned_data['price']
              bedrooms = form.cleaned_data['bedrooms']
              bathrooms = form.cleaned_data['bathrooms']
-             sqft = form.cleaned_data['sqft']
+             area = form.cleaned_data['area']
              city = form.cleaned_data['city']
              address = form.cleaned_data['address']
              photo_main = form.cleaned_data['photo_main']
@@ -42,7 +49,7 @@ def add_property(request):
                 price = price,
                 bedrooms = bedrooms,
                 bathrooms = bathrooms,
-                sqft = sqft,
+                area = area,
                 city = city,
                 address = address,
                 photo_main = photo_main,
